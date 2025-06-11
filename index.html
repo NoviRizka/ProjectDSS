@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SPK Metode TOPSIS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-main">
+        <img src="logo.png" alt="Logo Universitas" class="header-logo">
+        <div class="header-titles">
+          <h1>SISTEM PENDUKUNG KEPUTUSAN</h1>
+          <h2>Pemilihan Wisata Terbaik dengan Metode TOPSIS</h2>
+        </div>
+      </div>
+      <div class="group-info">
+        <h4>Kelompok 2</h4>
+        <ul>
+          <li><b>Sofita Ernawati (23670002)</b></li>
+          <li><b>Novi Rizka Anggraini (23670017)</b></li>
+          <li><b>Agustiningtyas Dyahretno Supriyani (23670022)</b></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="card">
+        <h3><i class="fas fa-weight"></i> Input Bobot Kriteria</h3>
+        <div class="weight-inputs">
+          <div class="input-group">
+            <label for="weightJarak">Jarak (Cost)</label>
+            <input type="number" id="weightJarak" value="5" min="0" step="0.1">
+          </div>
+          <div class="input-group">
+            <label for="weightBiaya">Biaya (Cost)</label>
+            <input type="number" id="weightBiaya" value="4" min="0" step="0.1">
+          </div>
+          <div class="input-group">
+            <label for="weightWaktu">Waktu (Benefit)</label>
+            <input type="number" id="weightWaktu" value="3" min="0" step="0.1">
+          </div>
+          <div class="input-group">
+            <label for="weightTransportasi">Transportasi (Benefit)</label>
+            <input type="number" id="weightTransportasi" value="2" min="0" step="0.1">
+          </div>
+          <div class="input-group">
+            <label for="weightFasilitas">Fasilitas (Benefit)</label>
+            <input type="number" id="weightFasilitas" value="1" min="0" step="0.1">
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3><i class="fas fa-table"></i> Data Alternatif Wisata</h3>
+        <div class="table-container">
+          <table id="dataTable">
+            <thead>
+              <tr>
+                <th>Nama Wisata</th>
+                <th>Jarak (km)</th>
+                <th>Biaya (Rp)</th>
+                <th>Waktu (jam)</th>
+                <th>Transportasi</th>
+                <th>Fasilitas</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rumah Adat Sungai Bering</td>
+                <td>4</td>
+                <td>4</td>
+                <td>5</td>
+                <td>2</td>
+                <td>1</td>
+                <td><button class="btn-delete"><i class="fas fa-trash"></i></button></td>
+              </tr>
+              <tr>
+                <td>Alek Bakajang</td>
+                <td>4</td>
+                <td>5</td>
+                <td>1</td>
+                <td>2</td>
+                <td>1</td>
+                <td><button class="btn-delete"><i class="fas fa-trash"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button id="btnAdd" class="btn-primary"><i class="fas fa-plus"></i> Tambah Data</button>
+      </section>
+
+      <section class="card">
+        <h3><i class="fas fa-calculator"></i> Hasil Perhitungan TOPSIS</h3>
+        <div id="resultContainer">
+          <p>Silakan klik "Hitung" untuk melihat hasil.</p>
+        </div>
+        <button id="btnCalculate" class="btn-primary"><i class="fas fa-calculator"></i> Hitung</button>
+      </section>
+    </div>
+  </div>
+
+  <div id="modalAdd" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3><i class="fas fa-plus-circle"></i> Tambah Data Wisata</h3>
+      <form id="formAdd">
+        <div class="form-group">
+          <label for="inputName">Nama Wisata</label>
+          <input type="text" id="inputName" required pattern="[A-Za-z\s]+" title="Nama wisata hanya boleh diisi dengan huruf dan spasi.">
+        </div>
+        <div class="form-group">
+          <label for="inputJarak">Jarak (km)</label>
+          <input type="number" id="inputJarak" required>
+        </div>
+        <div class="form-group">
+          <label for="inputBiaya">Biaya (Rp)</label>
+          <input type="number" id="inputBiaya" required>
+        </div>
+        <div class="form-group">
+          <label for="inputWaktu">Waktu (jam)</label>
+          <input type="number" id="inputWaktu" required>
+        </div>
+        <div class="form-group">
+          <label for="inputTransportasi">Transportasi (1-5)</label>
+          <input type="number" id="inputTransportasi" min="1" max="5" required>
+        </div>
+        <div class="form-group">
+          <label for="inputFasilitas">Fasilitas (1-5)</label>
+          <input type="number" id="inputFasilitas" min="1" max="5" required>
+        </div>
+        <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Simpan</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
